@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Student Registrations</title>
+  <!-- Improved viewport for iPhone + Android -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="admin.css" />
+  <script src="libs/exceljs.min.js"></script>
+  <script src="libs/FileSaver.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Admin Dashboard - Student Registrations</h2>
+
+    <div class="card" style="margin-bottom:12px;">
+      <button id="refreshBtn" class="btn">Refresh</button>
+      <button id="downloadBtn" class="btn">Download Excel</button>
+      <button id="clearAll" class="btn btn-danger">Clear All Entries</button>
+      <span id="onlineStatus" style="margin-left:10px; font-weight:600;"></span>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="dataTable" class="styled-table">
+        <thead>
+          <tr>
+            <th>Name</th><th>Grade</th><th>Section</th><th>LRN</th>
+            <th>Emergency</th><th>Address</th><th>Contact</th>
+            <th>Birthdate</th><th>Condition</th><th>Signature</th>
+            <th>Image Code</th><th>Entry Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    setupAdminTable("dataTable", "downloadBtn", "clearAll", "refreshBtn", "onlineStatus");
+    setInterval(() => refreshAdminTable("dataTable", "onlineStatus"), 5000);
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.error("SW registration failed:", err));
+    }
+  </script>
+</body>
+</html>

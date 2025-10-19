@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="student.css" />
+  <style>
+    /* mobile zoom quirks */
+    input, select, textarea, button { font-size: 16px; }
+
+    /* ensure canvas stretches with its container; JS will set pixel ratio */
+    .fullscreen-canvas canvas { width: 100% !important; height: 100% !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Form</h2>
+
+    <form id="regForm" class="card" autocomplete="on">
+      <label for="name">Name</label>
+      <input type="text" id="name" required />
+
+      <label for="grade">Grade</label>
+      <select id="grade" required>
+        <option value="">-- Select Grade --</option>
+        <optgroup label="Elementary">
+          <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+          <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option>
+        </optgroup>
+        <optgroup label="High School">
+          <option>Grade 7</option><option>Grade 8</option>
+          <option>Grade 9</option><option>Grade 10</option>
+        </optgroup>
+        <optgroup label="Senior High School">
+          <option>Grade 11</option><option>Grade 12</option>
+        </optgroup>
+      </select>
+
+      <label for="section">Section</label>
+      <input type="text" id="section" required />
+
+      <label for="lrn">LRN</label>
+      <input type="text" id="lrn" inputmode="numeric" required />
+
+      <label for="emergency">In Case of Emergency Person</label>
+      <input type="text" id="emergency" />
+
+      <label for="address">Address</label>
+      <input type="text" id="address" />
+
+      <label for="contact">Contact Number</label>
+      <input type="text" id="contact" inputmode="tel" />
+
+      <label for="birthdate">Birthdate</label>
+      <input type="date" id="birthdate" />
+
+      <label for="condition">Special Condition</label>
+      <input type="text" id="condition" />
+
+      <!-- Signature section -->
+      <label>Signature</label>
+      <img id="signaturePreview" class="signature-preview empty" alt="Signature Preview" />
+      <div class="signature-actions">
+        <button type="button" id="openSignature" class="btn">Add Signature</button>
+        <button type="button" id="clearSignature" class="btn btn-danger">Clear Signature</button>
+      </div>
+
+      <!-- Fullscreen Signature Modal -->
+      <div id="signatureModal" class="modal" aria-hidden="true">
+        <div class="modal-content fullscreen-canvas" role="dialog" aria-modal="true" aria-label="Signature Pad">
+          <canvas id="fullSignaturePad"></canvas>
+          <div class="modal-actions fixed-actions">
+            <button type="button" id="resetSignature" class="btn btn-danger">Clear</button>
+            <button type="button" id="saveSignature" class="btn">Done</button>
+            <button type="button" id="closeSignature" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <label for="imageCode">Image Code</label>
+      <input type="text" id="imageCode" placeholder="Enter Image Code" />
+
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // register service worker (optional)
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("✅ Service Worker registered"))
+        .catch(err => console.warn("SW registration failed (ignored):", err));
+    }
+    // IMPORTANT: no inline setupStudentForm() here — script.js will auto-init safely
+  </script>
+</body>
+</html>

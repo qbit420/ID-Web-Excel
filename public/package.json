@@ -1,0 +1,14 @@
+{
+  "name": "student-registration",
+  "version": "1.0.0",
+  "description": "Student registration system with signature and Excel export",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "exceljs": "^4.3.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

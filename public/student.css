@@ -1,0 +1,207 @@
+/* === Student Form Styling (Polished) === */
+
+/* Reset & Global Fix */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* Headings */
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #0d47a1;
+}
+
+/* Form container */
+form.card {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Labels */
+form.card label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Inputs, selects, textareas */
+form.card input,
+form.card select,
+form.card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fdfdfd;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+form.card input:focus,
+form.card select:focus,
+form.card textarea:focus {
+  border-color: #1976d2;
+  outline: none;
+  box-shadow: 0 0 3px rgba(25, 118, 210, 0.4);
+}
+
+/* Signature preview (minimalist image instead of inline canvas) */
+.signature-preview {
+  display: block;
+  width: 300px;
+  height: 80px;
+  border: 2px dashed #1976d2;
+  border-radius: 12px;
+  background: #f0f7ff;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  position: relative;
+}
+.signature-preview.empty { background: #fafafa; }
+.signature-preview.empty::before {
+  content: "No Signature";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #888;
+  font-style: italic;
+  pointer-events: none;
+}
+
+/* Modal with fade-in */
+.modal {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: #fff;
+  width: 95%;
+  height: 85%;
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Make canvas area fill available space */
+.fullscreen-canvas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.fullscreen-canvas canvas {
+  flex: 1;
+  display: block;
+}
+
+/* Modal action bar */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  background: #0d47a1;
+}
+.modal-actions .btn { flex: 1; }
+.fixed-actions { margin-top: auto; }
+
+/* Buttons */
+button, .btn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  min-height: 44px;
+}
+button:hover, .btn:hover { background-color: #125a9c; }
+button.danger, .btn.btn-danger { background-color: #d32f2f; }
+button.danger:hover, .btn.btn-danger:hover { background-color: #9a2222; }
+
+/* Success Message */
+#successMsg {
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  background-color: #c8e6c9;
+  color: #256029;
+  border: 1px solid #a5d6a7;
+  animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks for canvas intrinsic height */
+@media screen and (orientation: portrait) {
+  #fullSignaturePad { min-height: 240px; }
+}
+@media screen and (orientation: landscape) {
+  #fullSignaturePad { min-height: 160px; }
+}
+@media (max-width: 600px) {
+  #fullSignaturePad { min-height: 260px; }
+}
+/* === Student Form Styling (Polished & Modal Patch) === */
+
+/* ... (other CSS unchanged) ... */
+
+/* Modal with fade-in */
+.modal {
+  display: none !important; /* Patch: Ensure hidden by default */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal.show {
+  display: flex !important; /* Patch: Force flex when shown */
+  opacity: 1;
+}
+
+/* ... (rest unchanged) ... */

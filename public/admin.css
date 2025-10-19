@@ -1,0 +1,118 @@
+/* === Admin Dashboard Styles (Polished) === */
+
+/* General Layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* Headings */
+h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1976d2;
+}
+
+/* Buttons */
+button, .btn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  min-height: 40px;
+}
+button:hover, .btn:hover { background-color: #125a9c; }
+button.danger, .btn.btn-danger { background-color: #d32f2f; }
+button.danger:hover, .btn.btn-danger:hover { background-color: #9a2222; }
+
+/* Table wrapper */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Styled table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+  table-layout: fixed;
+}
+
+.styled-table th, .styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 100px;
+}
+
+.styled-table th {
+  background-color: #1976d2;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.styled-table .placeholder td {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  padding: 20px;
+}
+
+/* --- Signature image polish --- */
+.styled-table td img {
+  display: block;
+  max-width: 160px;
+  max-height: 80px;
+  object-fit: contain;
+  border: 2px dashed #1976d2;
+  border-radius: 8px;
+  background: #f0f7ff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin: 0 auto;
+}
+
+/* Signature column fix */
+.styled-table th:nth-child(10), 
+.styled-table td:nth-child(10) {
+  min-width: 160px;
+  max-width: 200px;
+  white-space: normal;
+  vertical-align: middle;
+}
+
+.styled-table th:last-child, 
+.styled-table td:last-child {
+  min-width: 140px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .styled-table {
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+  }
+  .styled-table td img {
+    max-width: 80px;
+    max-height: 50px;
+  }
+}
